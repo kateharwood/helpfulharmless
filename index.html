@@ -1,1 +1,164 @@
-<h1>Chatbots say the darndest things</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbots Say the Darndest Things</title>
+    <style>
+        body, html { 
+            height: 100%; 
+            margin: 0; 
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background: #FAF9F6; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            overflow: hidden;
+        }
+        .chat-container { 
+            width: 500px; 
+            height: 600px; 
+            /* background: white;  */
+            /* overflow-y: auto;  */
+            padding: 60px; 
+            /* box-shadow: 0 2px 10px rgba(0,0,0,0.1);  */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+        }
+        .messages::-webkit-scrollbar { 
+            display: none;  /* Safari and Chrome */
+        }
+
+        .message { 
+            margin-bottom: 30px; 
+        }
+        .text { 
+            /* padding: 10px;  */
+            border-radius: 5px; 
+            line-height: 1.4;
+            background-color: transparent; 
+        }
+        .label { 
+            /* padding: 0px 10px ; */
+            font-weight: bold; 
+            margin-bottom: 5px; 
+        }
+        #spinButton { 
+            padding: 10px 20px; 
+            background-color: #FAF9F6; 
+            /* color: white;  */
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+            /* width: 150px;  */
+            align-self: center;
+            font-size: 60px;
+            display:none;
+        }
+        .spinner {
+            animation: spin 1s linear;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #clickMeMessage span {
+            font-size: 22px;
+            font-style:italic;
+        }
+        #clickMeMessage {
+            position: fixed; 
+            bottom: 110px; 
+            right: 42%; 
+            transform: translateX(50%); 
+            cursor: pointer;
+            display: none;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(209, 207, 207, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: #E6E6FA; /* Fun blue background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: double 10px black; /* Double-lined border */
+            font-size: 40px;
+        }
+        #startButton {
+            padding: 10px 20px;
+            background-color: #746596; /* Darker blue background */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 20px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: justify;
+        }
+        #startButton:hover {
+            background-color: #7B68EE; /* Even darker blue on hover */
+        }
+        #devil {
+            font-size: 30px;
+            vertical-align: middle;
+            line-height: 1.5;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 0;
+            background-color: #f9f9f9; /* Matches the body background */
+            font-size: 9px;
+        }
+    </style>
+</head>
+<body>
+    <div id="initialModal" class="modal">
+        <div class="modal-content">
+            <p>Chatbots Say The Darndest Things</p>
+            <button id="startButton" onclick="startChat();">I'm ready <span id="devil" >😈</span></button>
+        </div>
+    </div>
+
+    <div class="chat-container">
+        <div class="messages" id="chatContainer">
+            <!-- Messages will appear here -->
+        </div>
+        <div id="clickMeMessage">
+            <span>👈 Click Me!</span>
+        </div>        
+        <button id="spinButton" onclick="startSpinning(); hideClickMeMessage();">🤖</button>
+    </div>
+    <script src="load_conversations.js"></script>
+
+</body>
+<footer style="text-align: center; margin-top: 20px;">
+    <p>
+        🤗
+        Data from 
+        <a href="https://huggingface.co/datasets/Anthropic/hh-rlhf" target="_blank">
+            https://huggingface.co/datasets/Anthropic/hh-rlhf
+        </a>
+    </p>
+</footer>
+
+</html>
