@@ -4519,8 +4519,11 @@ const allConversations = [
 ]
 
 
-
-
+let typingDelay = 35
+const windowWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+if (windowWidth < 600) { // slower typing speed for mobile
+    typingDelay = 50
+}
 
 let timeoutHandles = [];
 
@@ -4553,7 +4556,7 @@ function typeMessage(message, element, index = 0, callback) {
             typeMessage(message, element, index + 1, callback);
             // Automatically scroll down to the latest message
             chatContainer.scrollTop = chatContainer.scrollHeight;
-        }, 25);
+        }, typingDelay);
         timeoutHandles.push(handle);
     } else if (callback) {
         callback();
