@@ -4522,7 +4522,7 @@ const allConversations = [
 let typingDelay = 35
 const windowWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 if (windowWidth < 600) { // slower typing speed for mobile
-    typingDelay = 50
+    typingDelay = 40
 }
 
 let timeoutHandles = [];
