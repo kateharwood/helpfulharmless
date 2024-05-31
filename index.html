@@ -34,9 +34,17 @@
         .messages::-webkit-scrollbar { 
             display: none;  /* Safari and Chrome */
         }
+        @media screen and (max-width: 600px) {
+            .chat-container {
+                padding: 30px;
+                padding-top: 0px;
+                margin-top: -30px;
+                height: 500px;
 
+            }
+        }
         .message { 
-            margin-bottom: 30px; 
+            margin-top: 30px; 
         }
         .text { 
             /* padding: 10px;  */
@@ -49,6 +57,17 @@
             font-weight: bold; 
             margin-bottom: 5px; 
         }
+        #spinButton-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            padding: 0 20px;
+        }
+
         #spinButton { 
             padding: 10px 20px; 
             background-color: #FAF9F6; 
@@ -68,17 +87,9 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        #clickMeMessage span {
-            font-size: 22px;
-            font-style:italic;
-        }
         #clickMeMessage {
-            position: fixed; 
-            bottom: 110px; 
-            right: 42%; 
-            transform: translateX(50%); 
-            cursor: pointer;
-            display: none;
+            font-size: 20px;
+            font-style:italic;
         }
         .modal {
             position: fixed;
@@ -111,7 +122,6 @@
             margin-top: 20px;
             font-size: 20px;
             font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: justify;
         }
         #startButton:hover {
             background-color: #7B68EE; /* Even darker blue on hover */
@@ -143,10 +153,11 @@
         <div class="messages" id="chatContainer">
             <!-- Messages will appear here -->
         </div>
-        <div id="clickMeMessage">
-            <span>👈 Click Me!</span>
-        </div>        
-        <button id="spinButton" onclick="startSpinning(); hideClickMeMessage();">🤖</button>
+            <button id="spinButton" onclick="startSpinning(); hideClickMeMessage();">
+                🤖
+                <span id="clickMeMessage">👆Click Me!</span>
+            </button>
+        </div>
     </div>
     <script src="load_conversations.js"></script>
 
